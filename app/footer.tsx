@@ -1,83 +1,45 @@
 'use client'
-import { AnimatedBackground } from '@/components/ui/animated-background'
 import { TextLoop } from '@/components/ui/text-loop'
-import { MonitorIcon, MoonIcon, SunIcon } from 'lucide-react'
-import { useTheme } from 'next-themes'
-import { useEffect, useState } from 'react'
-
-const THEMES_OPTIONS = [
-  {
-    label: 'Light',
-    id: 'light',
-    icon: <SunIcon className="h-4 w-4" />,
-  },
-  {
-    label: 'Dark',
-    id: 'dark',
-    icon: <MoonIcon className="h-4 w-4" />,
-  },
-  {
-    label: 'System',
-    id: 'system',
-    icon: <MonitorIcon className="h-4 w-4" />,
-  },
-]
-
-function ThemeSwitch() {
-  const [mounted, setMounted] = useState(false)
-  const { theme, setTheme } = useTheme()
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) {
-    return null
-  }
-
-  return (
-    <AnimatedBackground
-      className="pointer-events-none rounded-lg bg-zinc-100 dark:bg-zinc-800"
-      defaultValue={theme}
-      transition={{
-        type: 'spring',
-        bounce: 0,
-        duration: 0.2,
-      }}
-      enableHover={false}
-      onValueChange={(id) => {
-        setTheme(id as string)
-      }}
-    >
-      {THEMES_OPTIONS.map((theme) => {
-        return (
-          <button
-            key={theme.id}
-            className="inline-flex h-7 w-7 items-center justify-center text-zinc-500 transition-colors duration-100 focus-visible:outline-2 data-[checked=true]:text-zinc-950 dark:text-zinc-400 dark:data-[checked=true]:text-zinc-50"
-            type="button"
-            aria-label={`Switch to ${theme.label} theme`}
-            data-id={theme.id}
-          >
-            {theme.icon}
-          </button>
-        )
-      })}
-    </AnimatedBackground>
-  )
-}
+import { Icon } from '@iconify/react'
 
 export function Footer() {
   return (
     <footer className="mt-24 border-t border-zinc-100 px-0 py-4 dark:border-zinc-800">
       <div className="flex items-center justify-between">
-        <a href="https://github.com/ibelick/nim" target="_blank">
+        <a href="https://github.com/LinHanlove" target="_blank">
           <TextLoop className="text-xs text-zinc-500">
-            <span>© 2024 Nim.</span>
-            <span>Built with Motion-Primitives.</span>
+            <span>© 2025 LinHam.</span>
+            <span>Thank you, nice to meet you.</span>
+            <p>
+              mail me at
+              <span font-mono>
+                hi
+                <span i-carbon-at />
+                2188817393@qq.com
+              </span>
+            </p>
           </TextLoop>
         </a>
-        <div className="text-xs text-zinc-400">
-          <ThemeSwitch />
+        <div className="flex items-center gap-2 text-xs text-zinc-400">
+          <p>Find me on</p>
+          <a
+            href="https://github.com/LinHanlove"
+            className="flex items-center gap-1"
+          >
+            <Icon icon="mdi:github" className="text-lg" />
+            GitHub
+          </a>
+          <a
+            href="https://juejin.cn/user/2670060580903288/postse"
+            className="flex items-center gap-1"
+          >
+            <Icon icon="simple-icons:juejin" className="text-lg" />
+            GitHub
+          </a>
+          <a href="/wechat" className="flex items-center gap-1">
+            <Icon icon="ic:baseline-wechat" className="text-lg" />
+            GitHub
+          </a>
         </div>
       </div>
     </footer>

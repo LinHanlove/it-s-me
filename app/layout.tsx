@@ -1,9 +1,12 @@
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono } from 'next/font/google'
-import './globals.css'
+import '@/assets/style/main.css'
+import '@/assets/style/tailwind.css'
+import '@/assets/style/prose.css'
 import { Header } from './header'
 import { Footer } from './footer'
 import { ThemeProvider } from 'next-themes'
+import Cursor from '@/components/ui/cursor'
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -43,14 +46,15 @@ export default function RootLayout({
           storageKey="theme"
           defaultTheme="system"
         >
-          <div className="flex min-h-screen w-full flex-col font-[family-name:var(--font-inter-tight)]">
+          <div className="flex min-h-screen w-full flex-col font-[family-name:var(--font-inter-tight)] text-[var(--theme)]">
+            <Header />
             <div className="relative mx-auto w-full max-w-screen-sm flex-1 px-4 pt-20">
-              <Header />
-              {children}
+              <div className="prose">{children}</div>
               <Footer />
             </div>
           </div>
         </ThemeProvider>
+        {/* <Cursor /> */}
       </body>
     </html>
   )

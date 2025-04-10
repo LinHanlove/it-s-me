@@ -1,4 +1,4 @@
-// import { MDXRemote } from 'next-mdx-remote'
+
 import { serialize } from 'next-mdx-remote/serialize'
 import fs from 'fs'
 import path from 'path'
@@ -12,7 +12,7 @@ export default async function Page({
 }) {
   try {
     const slug = (await params).slug
-    const filePath = path.join(process.cwd(), 'content', `${slug}.mdx`)
+    const filePath = path.join(process.cwd(), 'content', 'blog', `${slug}.mdx`)
     const fileContent = fs.readFileSync(filePath, 'utf-8')
     const source = await serialize(fileContent, { parseFrontmatter: true })
 
